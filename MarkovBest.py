@@ -26,6 +26,7 @@ class Markov:
         # Solicita os valores ao usuário com validação
         self.a = self._probabilidades_de_trasicao("Probabilidade a00: ")
         self.b = self._probabilidades_de_trasicao("Probabilidade a10: ")
+        
         self.c = self._probabilidades_de_trasicao("Probabilidade a01: ")
         self.d = self._probabilidades_de_trasicao("Probabilidade a11: ")
         
@@ -39,7 +40,9 @@ class Markov:
         ])
         
         # Estado inicial padrão 
-        self.estado = np.array([0, 1]) 
+        self.estado = np.array([0, 1])
+        print("Matriz de transição 2x2 padrão definida:")
+        print(self.transicao.T) #.T para imprimir transposta que é o formato correto por conta do jeito que o python lê a matriz
 
     def _init_3x3(self):
         print("Defina as probabilidades da matriz de transição 3x3 por colunas: ")
@@ -69,6 +72,8 @@ class Markov:
         
         # Estado inicial padrão 
         self.estado = np.array([0, 0, 1])
+        print("Matriz de transição 2x2 padrão definida:")
+        print(self.transicao.T) #.T para imprimir transposta que é o formato correto por conta do jeito que o python lê a matriz
 
     def _init_padrao_2x2(self):   
         # Solicita os valores ao usuário com validação
