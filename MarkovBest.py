@@ -44,6 +44,8 @@ class Markov:
                 self._init_padrao_5x5()
             else:
                 raise ValueError("Tamanho inválido.")
+        else:
+            raise ValueError("Opção inválida")
 
     def _init_2x2(self):
         print("Defina as probabilidades da matriz de transição 2x2 por colunas: ")
@@ -66,8 +68,10 @@ class Markov:
         
         # Estado inicial padrão 
         self.estado = np.array([0, 1])
+        self.padrao = -1
+
         print("Matriz de transição 2x2 padrão definida:")
-        print(self.transicao.T) #.T para imprimir transposta que é o formato correto por conta do jeito que o python lê a matriz
+        print(self.transicao.T) #.T para imprimir transposta que é o formato correto por conta do jeito que o python imprimire a matriz
 
     def _init_3x3(self):
         print("Defina as probabilidades da matriz de transição 3x3 por colunas: ")
@@ -97,8 +101,10 @@ class Markov:
         
         # Estado inicial padrão 
         self.estado = np.array([0, 0, 1])
+        self.padrao = -1
+
         print("Matriz de transição 3x3 definida:")
-        print(self.transicao.T) #.T para imprimir transposta que é o formato correto por conta do jeito que o python lê a matriz
+        print(self.transicao.T) #.T para imprimir transposta que é o formato correto por conta do jeito que o python imprimire a matriz
 
     def _init_4x4(self):
         print("Defina as probabilidades da matriz de transição 4x4 por colunas: ")
@@ -137,8 +143,10 @@ class Markov:
         
         # Estado inicial padrão 
         self.estado = np.array([0, 0, 0 ,1])
+        self.padrao = -1
+
         print("Matriz de transição 4x4 definida:")
-        print(self.transicao.T) #.T para imprimir transposta que é o formato correto por conta do jeito que o python lê a matriz
+        print(self.transicao.T) #.T para imprimir transposta que é o formato correto por conta do jeito que o python imprimire a matriz
 
     def _init_5x5(self):
         print("Defina as probabilidades da matriz de transição 5x5 por colunas: ")
@@ -188,15 +196,17 @@ class Markov:
         
         # Estado inicial padrão 
         self.estado = np.array([0, 0, 0, 0 ,1])
+        self.padrao = -1
+
         print("Matriz de transição 5x5 definida:")
-        print(self.transicao.T) #.T para imprimir transposta que é o formato correto por conta do jeito que o python lê a matriz
+        print(self.transicao.T) #.T para imprimir transposta que é o formato correto por conta do jeito que o python imprimire a matriz
 
     def _init_padrao_2x2(self):   
         # Solicita os valores ao usuário com validação
-        self.a = 0.97                      #[a00, a10]  [0.97, 0.01]
-        self.b = 0.03                      #[a01, a11]  [0.03, 0.99]
-        self.c = 0.01
-        self.d = 0.99
+        self.a = 0.7                      #[a00, a10]  [0.7, 0.6]
+        self.b = 0.3                      #[a01, a11]  [0.3, 0.4]
+        self.c = 0.6
+        self.d = 0.4
         
         # Valida se as colunas somam 1
         if not np.isclose(self.a + self.b, 1) or not np.isclose(self.c + self.d, 1):
@@ -209,23 +219,24 @@ class Markov:
         
         # Estado inicial padrão 
         self.estado = np.array([0, 1])
+        self.padrao = 2
 
         print("Matriz de transição 2x2 padrão definida:")
-        print(self.transicao.T) #.T para imprimir transposta que é o formato correto por conta do jeito que o python lê a matriz
+        print(self.transicao.T) #.T para imprimir transposta que é o formato correto por conta do jeito que o python imprimire a matriz
 
-    def _init_padrao_3x3(self):
+    def _init_padrao_3x3(self):                              #Padrao Exemplo Pronto e Documentado
         # Solicita os valores ao usuário com validação
-        self.a = 0.7
+        self.a = 0.8
         self.b = 0.2
-        self.c = 0.1
+        self.c = 0
 
-        self.d = 0.2
-        self.e = 0.6
-        self.f = 0.2
+        self.d = 0.1
+        self.e = 0.8
+        self.f = 0.1
 
-        self.g = 0.1
-        self.h = 0.3
-        self.i = 0.6
+        self.g = 0
+        self.h = 0.2
+        self.i = 0.8
 
         # Valida se as colunas somam 1
         if not np.isclose(self.a + self.b + self.c, 1) or not np.isclose(self.d + self.e + self.f, 1) or not np.isclose(self.g + self.h + self.i, 1) :
@@ -239,30 +250,31 @@ class Markov:
         
         # Estado inicial padrão 
         self.estado = np.array([0, 0, 1])
+        self.padrao = 3
 
         print("Matriz de transição 3x3 padrão definida:")
-        print(self.transicao.T) #.T para imprimir transposta que é o formato correto por conta do jeito que o python lê a matriz
+        print(self.transicao.T) #.T para imprimir transposta que é o formato correto por conta do jeito que o python imprimire a matriz
 
     def _init_padrao_4x4(self):
-        self.a = 0.5
-        self.b = 0.2
-        self.c = 0.2
-        self.d = 0.1
+        self.a = 0.2
+        self.b = 0.3
+        self.c = 0
+        self.d = 0.5
 
-        self.e = 0.1
-        self.f = 0.6
-        self.g = 0.2
-        self.h = 0.1
+        self.e = 0
+        self.f = 0.7
+        self.g = 0.1
+        self.h = 0.2
 
-        self.i = 0.2
-        self.j = 0.3
-        self.k = 0.4
-        self.l = 0.1
+        self.i = 0
+        self.j = 0
+        self.k = 0.5
+        self.l = 0.5
 
-        self.m = 0.1
-        self.n = 0.2
-        self.o = 0.4
-        self.p = 0.3
+        self.m = 1
+        self.n = 0
+        self.o = 0
+        self.p = 0
 
         # Valida se as colunas somam 1
         if not np.isclose(self.a + self.b + self.c + self.d, 1) or not np.isclose(self.e + self.f + self.g + self.h, 1) or not np.isclose(self.i + self.j + self.k + self.l, 1) or not np.isclose(self.m + self.n + self.o + self.p, 1) :
@@ -277,39 +289,41 @@ class Markov:
         
         # Estado inicial padrão 
         self.estado = np.array([0, 0, 0 ,1])
+        self.padrao = 4
+
         print("Matriz de transição 4x4 padrão definida:")
-        print(self.transicao.T) #.T para imprimir transposta que é o formato correto por conta do jeito que o python lê a matriz
+        print(self.transicao.T) #.T para imprimir transposta que é o formato correto por conta do jeito que o python imprimire a matriz
 
     def _init_padrao_5x5(self):
         self.a = 0.3
-        self.b = 0.2
-        self.c = 0.2
-        self.d = 0.2
-        self.e = 0.1
+        self.b = 0.7
+        self.c = 0
+        self.d = 0
+        self.e = 0
 
-        self.f = 0.1
-        self.g = 0.4
-        self.h = 0.2
-        self.i = 0.2
-        self.j = 0.1
+        self.f = 0.5
+        self.g = 0.5
+        self.h = 0
+        self.i = 0
+        self.j = 0
 
-        self.k = 0.2
-        self.l = 0.2
-        self.m = 0.3
-        self.n = 0.2
-        self.o = 0.1
+        self.k = 0
+        self.l = 0
+        self.m = 1
+        self.n = 0
+        self.o = 0
 
-        self.p = 0.1
-        self.q = 0.3
-        self.r = 0.3
-        self.s = 0.2
-        self.t = 0.1
+        self.p = 0
+        self.q = 0
+        self.r = 0.2
+        self.s = 0.8
+        self.t = 0
 
-        self.u = 0.2
-        self.v = 0.1
-        self.w = 0.2
-        self.x = 0.3
-        self.y = 0.2
+        self.u = 1
+        self.v = 0
+        self.w = 0
+        self.x = 0
+        self.y = 0
 
         # Valida se as colunas somam 1
         if not np.isclose(self.a + self.b + self.c + self.d + self.e, 1) or not np.isclose(self.f + self.g + self.h + self.i +self.j, 1) or not np.isclose(self.k + self.l + self.m + self.n + self.o, 1) or not np.isclose(self.p + self.q + self.r + self.s + self.t, 1) or not np.isclose(self.u + self.v + self.w + self.x + self.y, 1) :
@@ -325,8 +339,10 @@ class Markov:
         
         # Estado inicial padrão 
         self.estado = np.array([0, 0, 0, 0 ,1])
+        self.padrao = 5
+
         print("Matriz de transição 5x5 padrão definida:")
-        print(self.transicao.T) #.T para imprimir transposta que é o formato correto por conta do jeito que o python lê a matriz
+        print(self.transicao.T) #.T para imprimir transposta que é o formato correto por conta do jeito que o python imprimire a matriz
 
     def _probabilidades_de_trasicao(self, mensagem):   
         #Lê uma probabilidade válida (0-1) do usuário
@@ -346,13 +362,13 @@ class Markov:
             self.estado = np.dot(self.estado, self.transicao)
             
             if len(self.estado) == 2:
-                print(f"Ano {i+1}: Estado 1 = {self.estado[0]:.4f}, Estado 2 = {self.estado[1]:.4f}")
+                print(f"Interação {i+1}: Estado 1 = {self.estado[0]:.4f}, Estado 2 = {self.estado[1]:.4f}")
             elif len(self.estado) == 3:
-                print(f"Ano {i+1}: Estado 1 = {self.estado[0]:.4f}, Estado 2 = {self.estado[1]:.4f}, Estado 3 = {self.estado[2]:.4f}")
+                print(f"Interação {i+1}: Estado 1 = {self.estado[0]:.4f}, Estado 2 = {self.estado[1]:.4f}, Estado 3 = {self.estado[2]:.4f}")
             elif len(self.estado) == 4:
-                print(f"Ano {i+1}: Estado 1 = {self.estado[0]:.4f}, Estado 2 = {self.estado[1]:.4f}, Estado 3 = {self.estado[2]:.4f}, Estado 4 = {self.estado[3]:.4f}")
+                print(f"Interação {i+1}: Estado 1 = {self.estado[0]:.4f}, Estado 2 = {self.estado[1]:.4f}, Estado 3 = {self.estado[2]:.4f}, Estado 4 = {self.estado[3]:.4f}")
             elif len(self.estado) == 5:
-                print(f"Ano {i+1}: Estado 1 = {self.estado[0]:.4f}, Estado 2 = {self.estado[1]:.4f}, Estado 3 = {self.estado[2]:.4f}, Estado 4 = {self.estado[3]:.4f}, Estado 5 = {self.estado[4]:.4f}")
+                print(f"Interação {i+1}: Estado 1 = {self.estado[0]:.4f}, Estado 2 = {self.estado[1]:.4f}, Estado 3 = {self.estado[2]:.4f}, Estado 4 = {self.estado[3]:.4f}, Estado 5 = {self.estado[4]:.4f}")
 
         print("\nDistribuição Final:")
         for i, prob in enumerate(self.estado):
@@ -400,7 +416,16 @@ def main():
                 raise ValueError("A soma das probabilidades iniciais não pode exceder 1!")
             cadeia.estado = np.array([p1, p2, p3, p4, p5])
         
-        interacoes = int(input("\nQuantos interações deseja simular? (padrão 100 Interações) ") or 100) # Padrão 100 interacoes
+        if len(cadeia.estado) == 2 and cadeia.padrao == 2:
+            interacoes = int(input("\nQuantos interações deseja simular? (padrão 10 Interações) ") or 10) # Padrão 10 interacoes
+        elif len(cadeia.estado) == 3 and cadeia.padrao == 3:
+            interacoes = int(input("\nQuantos interações deseja simular? (padrão 5 Interações) ") or 5) # Padrão 5 interacoes para o exercicio
+        elif len(cadeia.estado) == 4 and cadeia.padrao == 4:
+            interacoes = int(input("\nQuantos interações deseja simular? (padrão 20 Interações) ") or 20) # Padrão 20 interacoes
+        elif len(cadeia.estado) == 5 and cadeia.padrao == 5:
+            interacoes = int(input("\nQuantos interações deseja simular? (padrão 100 Interações) ") or 100) # Padrão 100 interacoes #Nao pronto
+        else:
+            interacoes = int(input("\nQuantos interações deseja simular? (padrão 100 Interações) ") or 100) # Padrão 100 interacoes
         print(f"\nIniciando simulação para {interacoes:g} interações...")
         cadeia.simular(interacoes)
         
